@@ -78,6 +78,96 @@ $products = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #5a5a8b;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        form input, form textarea, form button {
+            width: 96%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form button {
+            background: #5a5a8b;
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background: #48486d;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background: #5a5a8b;
+            color: #fff;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        table img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        a {
+            color: #5a5a8b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome, Admin!</h1>
@@ -123,7 +213,7 @@ $products = $stmt->get_result();
                         <td><?= htmlspecialchars($product['description']) ?></td>
                         <td>$<?= htmlspecialchars(number_format($product['price'], 2)) ?></td>
                         <td>
-                            <a href="edit_product.php?id=<?= urlencode($product['product_id']) ?>">Edit</a> |
+                            <a href="update_product.php?id=<?= urlencode($product['product_id']) ?>">Edit</a> |
                             <a href="delete_product.php?id=<?= urlencode($product['product_id']) ?>" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
                         </td>
                     </tr>
